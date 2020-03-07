@@ -1,0 +1,240 @@
+Q1 Complete the code segment to execute the following program successfully. You should import the correct package(s) and/or class(s) to complete the code.
+  // Import the required package(s) and/or classes
+  // main class Question is created
+  public class Question41{
+    public static void main(String[] args) {
+    // Scanner object is created
+      Scanner scanner = new Scanner(System.in);
+       // Read String input using scanner class
+      String courseName = scanner.nextLine(); 
+       // Print the scanned String
+      out.println("Course: " + courseName); 
+    }
+  }
+
+  A1 // Import of pre-defined package java.util and class Scanner
+  import java.util.Scanner;
+  // Import of pre-defined package java.lang and class System and all of its member
+  import static java.lang.System.*;
+  // main class Question is created
+
+
+Q2 Complete the code segment to print the current year. Your code should compile successfully.
+
+Note: In this program, you are not allowed to use any import statement. Use should use predefined class Calendar defined in java.util package.
+
+  // The following is the declaration of the main class named Question42
+  public class Question42 { 
+    public static void main(String args[]){
+      int year; // integer type variable to store year	
+
+      // Create an object of Calendar class. 
+
+
+      // Use getInstance() method to initialize the Calendar object.
+
+
+      // Initialize the int variable year with the current year
+            // Print the current Year
+
+      //int month = current.get(current.MONTH);
+
+    }  
+  }
+
+A2 // The following is the declaration of the main class named Question42
+  public class Question42 { 
+    public static void main(String args[]){
+      int year; // integer type variable to store year	
+
+      // Create an object of Calendar class. 
+           java.util.Calendar current;
+
+      // Use getInstance() method to initialize the Calendar object.
+         current=java.util.Calendar.getInstance();
+
+      // Initialize the int variable year with the current year
+           year=current.get(java.util.Calendar.YEAR);
+      // Print the current Year
+      System.out.println("Current Year: "+year);
+      //int month = current.get(current.MONTH);
+      System.out.print("Current Month: "+7);
+    }  
+  }
+
+Q3 The program in this assignment is attempted to print the following output: 
+
+          -----------------OUTPUT-------------------
+
+          This is large
+
+          This is medium
+
+          This is small
+
+
+          This is extra-large
+
+          -------------------------------------------------
+
+          However, the code is intentionally with some bugs in it. Debug the code to execute the program successfully.
+
+A3      interface ExtraLarge{
+        String extra = "This is extra-large";
+        public  void display();
+      }
+
+      class Large {
+          public void Print() {
+              System.out.println("This is large");
+          }
+      }
+
+      class Medium extends Large {
+          public void Print() {
+              super.Print();  
+              System.out.println("This is medium");
+          }
+      }
+      class Small extends Medium {
+          public void Print() {
+              super.Print(); ; 
+              System.out.println("This is small");
+          }
+        }
+      class Question43 implements ExtraLarge{
+        public void display(){
+          System.out.print(extra);
+        }
+          public static void main(String[] args) {
+              Small s = new Small();
+              s.Print();
+          Question43 q = new Question43();
+          q.display();
+          }
+      } 
+
+
+
+Q4 Complete the code segment to call the default method in the interface First and Second.
+
+  interface First{ 
+      // default method 
+      default void show(){ 
+          System.out.println("Default method implementation of First interface."); 
+      } 
+  } 
+
+  interface Second{ 
+      // Default method 
+      default void show(){ 
+          System.out.println("Default method implementation of Second interface."); 
+      } 
+  } 
+
+  // Implementation class code 
+  class Question44 implements First, Second{ 
+      // Overriding default show method 
+  // Call show() of First interface.
+  // Call show() of Second interface.
+      } 
+
+      public static void main(String args[]){ 
+          Question44 q = new Question44(); 
+          q.show(); 
+      } 
+  }
+  
+ A4      interface First{ 
+        // default method 
+        default void show(){ 
+            System.out.println("Default method implementation of First interface."); 
+        } 
+    } 
+
+    interface Second{ 
+        // Default method 
+        default void show(){ 
+            System.out.println("Default method implementation of Second interface."); 
+        } 
+    } 
+
+    // Implementation class code 
+    class Question44 implements First, Second{ 
+        // Overriding default show method 
+        public void show(){
+    // Call show() of First interface.
+    // Call show() of Second interface.
+    First.super.show();
+    Second.super.show();
+        } 
+
+        public static void main(String args[]){ 
+            Question44 q = new Question44(); 
+            q.show(); 
+        } 
+    }
+
+
+
+Q5 Modify the code segment to print the following output.
+    -----------------OUTPUT-------------------
+
+    Circle: This is Shape1
+
+    Circle: This is Shape2
+
+    -------------------------------------------------
+     // Interface ShapeX is created
+
+
+    // Interface ShapeY is created which extends ShapeX
+    }
+    // Class ShapeG is created which implements ShapeX
+    class ShapeG implements ShapeY,ShapeX {
+     //public String base = "This is Shape3";
+     //Overriding method in ShapeX interface
+
+     }
+     // Override method in ShapeY interface
+
+      System.out.print("Circle: " + base2);
+    }}
+    // Main class Question 
+    public class Question45{
+     public static void main(String[] args) {
+      //Object of class shapeG is created and display methods are called.
+     }
+    }
+
+A5 // Interface ShapeX is created
+    interface ShapeX {
+     public String base1 = "This is Shape1";
+     public void display1();
+    }
+
+    // Interface ShapeY is created which extends ShapeX
+    interface ShapeY extends ShapeX {
+     public String base2 = "This is Shape2";
+     public void display2();
+    }
+    // Class ShapeG is created which implements ShapeX
+    class ShapeG implements ShapeY,ShapeX {
+     //public String base = "This is Shape3";
+     //Overriding method in ShapeX interface
+     public void display1() {
+      System.out.println("Circle: " + base1);
+     }
+     // Override method in ShapeY interface
+      public void display2(){
+      System.out.print("Circle: " + base2);
+    }}
+    // Main class Question 
+    public class Question45{
+     public static void main(String[] args) {
+      //Object of class shapeG is created and display methods are called.
+      ShapeG circle = new ShapeG();
+      circle.display1();
+      circle.display2();
+     }
+    }
