@@ -1,0 +1,211 @@
+Q1 An interface Number is defined in the following program.  You have to declare a class A, which will implement the interface Number. Note that the method findSqr(n) will return the square of the number n.
+  import java.util.Scanner;
+  interface Number {
+      int findSqr(int i);  // Returns the square of n
+  }
+
+
+  //Create a class A which implements the interface Number.
+             //Create an object of class A
+             // Read a number from the keyboard
+           
+      } 
+  }
+
+
+A1 import java.util.Scanner;
+  interface Number {
+      int findSqr(int i);  // Returns the square of n
+  }
+
+
+  //Create a class A which implements the interface Number.
+  class A implements Number
+  { 
+   public int findSqr(int i){
+      return i*i;
+    }
+  }
+    public class Question5_1{ 
+          public static void main (String[] args){ 
+          A a = new A();   //Create an object of class A
+             // Read a number from the keyboard
+             Scanner sc = new Scanner(System.in);  
+             int i = sc.nextInt();
+             System.out.print(a.findSqr(i)); 
+      } 
+  }
+
+
+
+Q2 This program is to find the GCD (greatest common divisor) of two integers writing a recursive function findGCD(n1,n2). Your function should return -1, if the argument(s) is(are) other than positive number(s).
+
+  import java.util.Scanner;
+
+  interface GCD {
+      public int findGCD(int n1,int n2);
+  }
+
+
+
+  //Create a class B, which implements the interface GCD.
+          //Create an object of class B
+              // Read two numbers from the keyboard
+           } 
+  }
+
+A2 import java.util.Scanner;
+
+interface GCD {
+    public int findGCD(int n1,int n2);
+}
+
+
+
+//Create a class B, which implements the interface GCD.
+class B implements GCD
+{
+  		public int findGCD(int n1,int n2)
+       
+        {
+          if (n2 == 0)
+          {
+            return n1;
+          }
+          return findGCD(n2,n2%n1);
+        }
+}
+public class Question5_2{ 
+        public static void main (String[] args){ 
+	      B a = new B();   //Create an object of class B
+            // Read two numbers from the keyboard
+            Scanner sc = new Scanner(System.in);  
+             int p1 = sc.nextInt();
+             int p2 = sc.nextInt();
+            System.out.print(a.findGCD(p1,p2)); 
+    } 
+}
+
+
+
+Q3 Complete the code segment to catch the ArithmeticException in the following, if any. On the occurrence of such an exception, your program should print “Exception caught: Division by zero.” If there is no such exception, it will print the result of division operation on two integer values.
+
+  import java.util.Scanner;
+
+    public class Question5_3 {
+    public static void main(String[] args) { 
+        int a, b;
+        Scanner input = new Scanner(System.in);
+
+  //Read any two values for a and b.
+   //Get the result of a/b;
+
+
+A3 import java.util.Scanner;
+  
+  public class Question5_3 {
+  public static void main(String[] args) { 
+      int a, b;
+      Scanner input = new Scanner(System.in);
+
+//Read any two values for a and b.
+ //Get the result of a/b;
+a = input.nextInt();
+b = input.nextInt();
+try{
+  	System.out.print(a/b);
+}catch(ArithmeticException e){
+  System.out.print("Exception caught: Division by zero.");
+}
+  }
+}
+
+
+
+Q4 In the following program, an array of integer data to be initialized. During the initialization, if a user enters a value other than integer value, then it will throw InputMismatchException exception. On the occurrence of such an exception, your program should print “You entered bad data.” If there is no such exception it will print the total sum of the array.
+    //Prefixed Fixed Code:
+    import java.util.*;
+    public class Question5_4{
+      public static void main(String[] args) {
+          Scanner sc = new Scanner(System.in); 
+          int length = sc.nextInt(); 
+          // create an array to save user input 
+    //Define try-catch block to save user input in the array "name",if there is an exception then catch the exception otherwise print the total sum of the array.    
+
+
+A4 //Prefixed Fixed Code:
+    import java.util.*;
+    public class Question5_4{
+      public static void main(String[] args) {
+          Scanner sc = new Scanner(System.in); 
+          int length = sc.nextInt(); 
+          // create an array to save user input 
+          int[] name = new int[length];
+          int sum=0;//save the total sum of the array.
+    //Define try-catch block to save user input in the array "name",if there is an exception then catch the exception otherwise print the total sum of the array.    
+    for(int i=0;i<length;i++)
+    {
+      try{
+        name[i]=sc.nextInt();
+        sum += name[i];
+      }catch(InputMismatchException e){
+        sum= -1;
+      }
+    }
+    if(sum == -1)
+    {
+        System.out.print("You entered bad data.");
+    }
+    else
+    {
+      System.out.print(sum);
+    }
+
+
+     }
+    }
+
+
+
+Q5 In the following program, there may be multiple exceptions. You have to complete the code using only one try-catch block to handle all the possible exceptions.
+
+For example, if user’s input is 1, then it will throw and catch “java.lang.NullPointerException“.
+    import java.util.Scanner;
+    public class Question5_5{
+      public static void main (String   args[ ] ) {
+               Scanner scan = new Scanner(System.in);
+                int i = scan.nextInt();
+          int j; 
+        // Put the following code under try-catch block to handle exceptions
+    
+    
+    
+A5  import java.util.Scanner;
+    public class Question5_5{
+      public static void main (String   args[ ] ) {
+               Scanner scan = new Scanner(System.in);
+                int i = scan.nextInt();
+          int j; 
+        // Put the following code under try-catch block to handle exceptions
+    try{
+          switch (i) {
+          case 0 : 
+        int zero = 0; 
+        j = 92/ zero; 		
+        break;
+                case 1 : 
+        int b[ ] = null; 
+        j = b[0] ; 	
+        break;
+                default:
+             System.out.println("No exception");
+       }
+    }catch(Exception e)
+    {
+        System.out.print(e);
+    }
+
+
+
+      }
+    }
