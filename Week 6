@@ -1,0 +1,193 @@
+Q1 Complete the code segment to print the following using the concept of extending the Thread class in Java:
+
+-----------------OUTPUT-------------------
+
+Thread is Running.
+
+-------------------------------------------------
+
+ // Write the appropriate code to extend the Thread class to complete the class Question61.
+public class Question61 extends Thread{ 
+  public void run(){
+    System.out.print("Thread is Running.");
+  }
+
+	public static void main(String args[]){  
+
+		// Creating object of thread class
+
+
+A1  // Write the appropriate code to extend the Thread class to complete the class Question61.
+public class Question61 extends Thread{ 
+  public void run(){
+    System.out.print("Thread is Running.");
+  }
+
+	public static void main(String args[]){  
+
+		// Creating object of thread class
+		Question61 thread=new Question61();  
+
+                // Start the thread
+		thread.start();
+	}  
+}
+
+
+Q2 In the following program, a thread class ThreadRun is created using the Runnable interface which prints "Thread using Runnable interface". Complete the main class to create a thread object of the class ThreadRun and run the thread,
+   class ThreadRun implements Runnable {
+        public void run(){ 
+            System.out.print("Thread using Runnable interface."); 
+        } 
+   }
+// Create main class Question62 with main() method and appropriate statements in it
+public class Question62{
+  
+  public static void main (String[] args){
+    
+ 
+ 
+ A2    class ThreadRun implements Runnable {
+        public void run(){ 
+            System.out.print("Thread using Runnable interface."); 
+        } 
+   }
+// Create main class Question62 with main() method and appropriate statements in it
+public class Question62{
+  
+  public static void main (String[] args){
+    
+    ThreadRun obj = new ThreadRun();
+    Thread obj2 = new Thread(obj);
+    obj2.start();
+  }
+}
+
+
+
+Q3 A part of the Java program is given, which can be completed in many ways, for example using the concept of thread, etc.  Follow the given code and complete the program so that your program prints the message "NPTEL Java". Your program should utilize the given interface/ class.
+// Interface A is defined with an abstract method run()
+interface A {
+	public abstract void run();
+}
+
+// Class B is defined which implements A and an empty implementation of run()
+
+// Create a class named MyThread and extend/implement the required class/interface
+
+// Define a method in MyThread class to print the output 
+		// Main class Question is defined
+
+
+
+A3 // Interface A is defined with an abstract method run()
+interface A {
+	public abstract void run();
+}
+
+// Class B is defined which implements A and an empty implementation of run()
+class B implements A {
+	public void run() {}
+}
+
+// Create a class named MyThread and extend/implement the required class/interface
+
+// Define a method in MyThread class to print the output 
+class MyThread extends B{
+  public void run(){
+    System.out.print("NPTEL Java");
+  }
+}
+		// Main class Question is defined
+public class Question63 {
+     public static void main(String[] args) {
+		 // An object of MyThread class is created
+         MyThread t = new MyThread();
+		 // run() of class MyThread is called
+         t.run();
+     }
+}
+
+
+Q4 Execution of two or more threads occurs in a random order. The keyword 'synchronized' in Java is used to control the execution of thread in a strict sequence. In the following, the program is expected to print some numbers. Do the necessary use of 'synchronized' keyword, so that, the program prints the output in the following order:  
+-----------------OUTPUT-------------------
+
+5
+10
+15
+20
+25
+100
+200
+300
+400
+500
+-------------------------------------------------
+
+A4 class Execute{  
+synchronized void print(int n){
+   for(int i=1;i<=5;i++){  
+     System.out.println(n*i);  
+     try{  
+      Thread.sleep(400);  
+     }catch(Exception e){
+        System.out.println(e);
+     }  
+   }
+ }  
+
+} // Ending Execute class
+
+class Thread1 extends Thread{  
+	Execute t;  
+	Thread1(Execute t){  
+		this.t=t;  
+	}  
+	public void run(){  
+		t.print(5);  
+	} 
+}  
+
+class Thread2 extends Thread{  
+	Execute t;  
+	Thread2(Execute t){  
+		this.t=t;  
+	}  
+	public void run(){  
+		t.print(100);  
+	}  
+}  
+  
+public class Question64{  
+	public static void main(String args[]){  
+		Execute obj = new Execute();//only one object  
+		Thread1 t1=new Thread1(obj);  
+		Thread2 t2=new Thread2(obj);  
+		t1.start();  
+		t2.start();  
+	}  
+}  
+
+
+Q5 Add necessary codes to print the following:
+-----------------OUTPUT-------------------
+
+Name of thread 't':Thread-0
+New name of thread 't':NPTEL
+Thread is running.
+-------------------------------------------------
+
+A5 class Question65 extends Thread{  
+  public void run(){  
+    System.out.println("Thread is running.");  
+  }  
+ public static void main(String args[]){  
+    Question65 t=new Question65();  
+    System.out.println("Name of thread 't':"+ t.getName());  
+
+// Write the necessary code below...
+t.start();
+t.setName("NPTEL");
+   System.out.println("New name of thread 't':"+ t.getName());  
+ }  
+}
