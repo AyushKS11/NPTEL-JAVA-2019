@@ -1,0 +1,187 @@
+Q1 Complete the following code fragment to read three integer values from the keyboard and find the sum of the values. Declare a variable "sum" of type int and store the result in it.
+// Write the appropriate statement(s) to import the package(s) you need in your program
+public class Question1{ 
+        public static void main (String[] args){
+
+//Write the appropriate code to read the 3 integer values and find their sum.
+
+A1 // Write the appropriate statement(s) to import the package(s) you need in your program
+import java.util.*;
+public class Question1{ 
+        public static void main (String[] args){
+
+//Write the appropriate code to read the 3 integer values and find their sum.
+ Scanner sc=new Scanner (System.in);
+          int a = sc.nextInt();
+          int b = sc.nextInt();
+          int c = sc.nextInt();
+          int sum=a+b+c;
+          
+ System.out.println(sum);
+  }
+}
+
+
+Q2 Complete the code segment to catch the exception in the following, if any. On the occurrence of such an exception, your program should print “Please enter valid data” .If there is no such exception, it will print the "square of the number".
+import java.io.*;  
+public class Question2{  
+public static void main(String args[]){  
+ //Use appropriate Try..catch block to complete the code  
+  InputStreamReader r=new InputStreamReader(System.in);  
+   BufferedReader br=new BufferedReader(r);
+
+
+A2 import java.io.*;  
+public class Question2{  
+public static void main(String args[]){  
+ //Use appropriate Try..catch block to complete the code  
+  InputStreamReader r=new InputStreamReader(System.in);  
+   BufferedReader br=new BufferedReader(r);
+
+try{
+  
+  String number=br.readLine(); 
+   int x = Integer.parseInt(number);
+   System.out.print(x*x);
+  
+}
+
+catch(Exception e){
+  System.out.print("Please enter valid data");
+
+}
+  
+	 
+  
+ }  
+} 
+
+
+Q3 A byte char array is initialized. You have to enter an index value"n". According to index your program will print the byte and its corresponding char value.
+Complete the code segment to catch the exception in the following, if any. On the occurrence of such an exception, your program should print “exception occur” .If there is no such exception, it will print the required output.
+import java.util.*;
+public class Question3 {  
+    public static void main(String[] args) { 
+       try{	
+	  byte barr[]={'N','P','T','E','L','-','J','A','V','A','J','A','N','-','N','O','C','C','S','E'};
+          Scanner inr = new Scanner(System.in);
+	  int n = inr.nextInt();
+// Complete the code to get specific indexed byte value and its corresponding char value.
+
+
+A3 import java.util.*;
+public class Question3 {  
+    public static void main(String[] args) { 
+       try{	
+	  byte barr[]={'N','P','T','E','L','-','J','A','V','A','J','A','N','-','N','O','C','C','S','E'};
+          Scanner inr = new Scanner(System.in);
+	  int n = inr.nextInt();
+// Complete the code to get specific indexed byte value and its corresponding char value.
+
+
+System.out.println(barr[n]);
+System.out.println((char)barr[n]);
+
+
+}
+       
+       catch (Exception e){
+	    System.out.println("exception occur");
+	    }	   
+    }  
+}  
+
+
+Q4 The following program reads a string from the keyboard and is stored in the String variable "s1". You have to complete the program so that it should should print the number of vowels in s1 . If your input data doesn't have any vowel it will print "0".
+
+import java.io.*;
+import java.util.*;
+
+public class Question4{  
+    public static void main(String[] args) { 
+	  int c=0;
+         try{
+            InputStreamReader r=new InputStreamReader(System.in);  
+            BufferedReader br=new BufferedReader(r);  
+            String s1 = br.readLine();
+  //Write your code here to count the number of vowels in the string "s1"     
+      System.out.println(c); 
+	   }
+       catch (Exception e){
+		 System.out.println(e);
+	    }	   
+    }  
+}  
+
+
+A4 import java.io.*;
+import java.util.*;
+
+public class Question4{  
+    public static void main(String[] args) { 
+	  int c=0;
+         try{
+            InputStreamReader r=new InputStreamReader(System.in);  
+            BufferedReader br=new BufferedReader(r);  
+            String s1 = br.readLine();
+  //Write your code here to count the number of vowels in the string "s1"     
+for (int i=0;i<s1.length();i++){
+  if (s1.charAt(i)=='a'||s1.charAt(i)=='e'||s1.charAt(i)=='i'||s1.charAt(i)=='o'||s1.charAt(i)=='u'
+      ||s1.charAt(i)=='A'||s1.charAt(i)=='E'||s1.charAt(i)=='I'||s1.charAt(i)=='O'||s1.charAt(i)=='U')
+    c++;
+}
+      System.out.println(c); 
+	   }
+       catch (Exception e){
+		 System.out.println(e);
+	    }	   
+    }  
+}  
+
+
+
+Q5 A string "s1" is already initialized. You have to read the index "n"  from the keyboard. Complete the code segment to catch the exception in the following, if any. On the occurrence of such an exception, your program should print “exception occur” .If there is no such exception, your program should replace the char "a" at the index value "n" of the "s1" ,then it will print the modified string.
+public class Question5 {  
+    public static void main(String[] args) { 
+       try{	
+	    String s1="NPTELJAVA"; 
+            Scanner inr = new Scanner(System.in);
+	    int n = inr.nextInt();
+            char c='a';
+	     
+//Replace the char in string "s1" with the char 'a' at index "n"  and print the modified string 
+
+  System.out.print(charArray[i]);
+
+}
+                   
+     catch (Exception e){
+          System.out.println("exception occur");
+	    }	   
+    }  
+}  
+
+A5 import java.util.*;
+public class Question5 {  
+    public static void main(String[] args) { 
+       try{	
+	    String s1="NPTELJAVA"; 
+            Scanner inr = new Scanner(System.in);
+	    int n = inr.nextInt();
+            char c='a';
+	     
+//Replace the char in string "s1" with the char 'a' at index "n"  and print the modified string 
+
+ char[] charArray = s1.toCharArray();
+charArray[n]=c;
+for(int i= 0 ; i<s1.length();i++){
+  System.out.print(charArray[i]);
+}
+}
+                   
+     catch (Exception e){
+          System.out.println("exception occur");
+	    }	   
+    }  
+}  
+
