@@ -1,0 +1,370 @@
+Q1 Complete the code to develop a BASIC CALCULATOR that can perform operations like Addition, Subtraction, Multiplication and Division.
+
+Note the following points carefully:
+1. Use only double datatype to store calculated numeric values.
+2. Assume input to be of integer datatype.
+3. The output should be rounded using Math.round() method.
+4. Take care of the spaces during formatting output (e.g., single space each before and after =).
+5. The calculator should be able to perform required operations on a minimum of two operands as shown in the below example:
+
+Input:
+	       5+6 
+
+Output:
+	       5+6 = 11
+         
+         
+A1 import java.util.Scanner;
+public class Question91{
+	public static void main(String args[]){
+		Scanner sc = new Scanner(System.in);
+		String input = sc.nextLine(); // Read as string, e.g., 5+6
+// Declare and initialize the required variable(s)
+
+// Split the input string into character array
+
+/*
+Write your method to separate two operands
+and operators and then perform the required operation.
+*/
+
+// Print the output as stated in the question
+
+    
+char[] charArray = input.toCharArray();
+char operator=charArray[1];
+double a = (double) (charArray[0] - '0');
+
+double b = (double) (charArray[2] - '0');
+
+if (operator=='+')
+  System.out.print(input+" = "+Math.round(a+b));
+else if (operator=='-')
+  System.out.print(input+" = "+Math.round(a-b));
+else if (operator=='*')
+  System.out.print(input+" = "+Math.round(a*b));
+else if (operator=='/')
+  System.out.print(input+" = "+Math.round(a/b));
+
+	}
+}          
+
+
+Q2 Week 9 - Programming Assignment 9: Q2
+
+Complete the code to develop an ADVANCED CALCULATOR that emulates all the functions of the GUI Calculator .
+
+Note the following points carefully:
+1. Use only double datatype to store all numeric values.
+2. Each button on the calculator should be operated by typing the characters from 'a' to 'p'.
+3. To calculate 25-6, User should input fjhkc (where, f for 2, j for 5, h for '-', k for 6 and c for '=' ).
+3. You may use the already defined function gui_map(char).
+4. Without '=', operations won't give output as shown in Input_2 and Output_2 example below.
+5. The calculator should be able to perform required operations on two operands as shown in the below example:
+
+Input_1:
+	       klgc
+
+Output_1:
+		18.0
+
+Input_2:
+	       klg
+
+Output_2:
+		
+    
+A2 import java.util.Scanner;
+public class Question92{
+	public static void main(String args[]){
+		Scanner sc = new Scanner(System.in);
+		String input = sc.nextLine();
+   
+String num1="";
+String num2="";
+char op='a';
+int equal=0;
+int flag=0;
+int j=0;
+int check=0;
+int ch=0;
+char[] charArray = input.toCharArray();
+char[] numarray=new char[input.length()];
+for(int i=0;i<input.length();i++){
+  if(charArray[i]<'a' || charArray[i]>'p'){
+  	check=1;
+    break;
+  }
+  if(charArray[i]=='c')
+    ch=1;
+	char out=gui_map(charArray[i]);
+  	numarray[i]=out;
+  
+  
+  if(out=='+' || out=='-' || out=='X' || out=='/'){
+  		flag=1;
+    op=out;
+  }
+  if (flag==0){
+  	num1=num1+String.valueOf(out);
+  }
+  else{
+    if(j==0){
+      j++;
+      continue;
+    }
+    if (out=='='){
+    	equal=1;
+      break;
+    }
+	num2=num2+String.valueOf(out);
+    
+  }
+}
+
+if(ch==1 && check==0){
+	double a = Double.parseDouble(num1);
+  	double b=Double.parseDouble(num2);
+  if(op=='+')
+    System.out.print(a+b);
+  else if(op=='-')
+    System.out.print(a-b);
+  else if(op=='X')
+    System.out.print(a*b);
+  else if(op=='/')
+    System.out.print(a/b);
+}
+
+	}// The main() method ends here.
+	
+// A method that takes a character as input and returns the corresponding GUI character	
+	static char gui_map(char in){
+		char out = 'N';// N = Null/Empty
+		char gm[][]={{'a','.'}
+					,{'b','0'}
+					,{'c','='}
+					,{'d','+'}
+					,{'e','1'}
+					,{'f','2'}
+					,{'g','3'}
+					,{'h','-'}
+					,{'i','4'}
+					,{'j','5'}
+					,{'k','6'}
+					,{'l','X'}
+					,{'m','7'}
+					,{'n','8'}
+					,{'o','9'}
+					,{'p','/'}};
+					
+		// Checking for maps
+		for(int i=0; i<gm.length; i++){
+			if(gm[i][0]==in){
+				out=gm[i][1];
+				break;
+			}
+		}
+		return out;
+	}
+}
+
+
+
+Q3 Complete the code to perform a 45 degree anti clock wise rotation with respect to the center of a 5 × 5 2D Array as shown below:
+
+INPUT:
+              00100
+              00100
+              11111
+              00100
+              00100
+
+OUTPUT:
+
+              10001
+              01010
+              00100
+              01010
+              10001
+
+Note the following points carefully:
+1. Here, instead of 0 and 1 any character may be given.
+2. The input and output array size must be of dimension 5 × 5 and nothing else.
+
+A3 import java.util.Scanner;
+public class Question93{
+	public static void main(String args[]){
+		Scanner sc = new Scanner(System.in);
+// Input 5X5 2D Array using Scanner Class
+
+
+// Perform 45-Degree rotation keeping center same (use your own logic)
+
+
+// Print the transformed output 5X5 2D Array
+
+    String arr[]=new String[5];
+    for(int i=0;i<5;i++)
+        arr[i]=sc.nextLine();
+    
+char matrix[][]=new char[5][5];
+for(int i=0;i<5;i++){
+	char[] chararray=arr[i].toCharArray();
+  for(int j=0;j<5;j++){
+  	matrix[i][j]=chararray[j];
+  }
+}
+char newmatrix[][]=new char[5][5];
+for (int i=0;i<5;i++)
+{
+  for(int j=0;j<5;j++)
+  {
+      if(i==0&&j<3)
+          newmatrix[i][j+2]=matrix[i][j];
+      else if(i==0&&j==3)
+          newmatrix[i+1][j+1]=matrix[i][j];
+      else if(i<3&&j==4)
+          newmatrix[i+2][j]=matrix[i][j];
+      else if(i==3&&j==4)
+          newmatrix[i+1][j-1]=matrix[i][j];
+      else if(i==4&&j>1)
+          newmatrix[i][j-2]=matrix[i][j];
+      else if(i==4&&j==1)
+          newmatrix[i-1][j-1]=matrix[i][j];
+      else if(i>1&&j==0)
+          newmatrix[i-2][j]=matrix[i][j];
+      else if(i==1&&j==0)
+          newmatrix[i-1][j+1]=matrix[i][j];
+      else if(i==1&&j>0&&j<4){
+          if(j==3)
+              newmatrix[i+1][j]=matrix[i][j];
+          else
+              newmatrix[i][j+1]=matrix[i][j];
+          
+      }
+      else if(i==2&&j>0&&j<4){
+          if(j==2)
+              newmatrix[i][j]=matrix[i][j];
+          else if(j==3)
+              newmatrix[i+1][j]=matrix[i][j];
+          else
+              newmatrix[i-1][j]=matrix[i][j];
+      }
+      else{
+          if(j==1)
+              newmatrix[i-1][j]=matrix[i][j];
+          else
+              newmatrix[i][j-1]=matrix[i][j];
+      }
+  }
+}
+
+for(int i=0;i<5;i++){
+    for(int j=4;j>=0;j--)
+        System.out.print(newmatrix[i][j]);
+    System.out.println();
+}
+	} // The main() method ends here
+} // The main class ends here
+
+
+
+Q4 A program needs to be developed which can mirror reflect any 5 × 5 2D character array into its side-by-side reflection. Write suitable code to achieve this transformation as shown below:
+
+ INPUT:                                       OUTPUT:
+               OOXOO                                        OOXOO
+               OOXOO                                        OOXOO
+               XXXOO                                        OOXXX
+               OOOOO                                        OOOOO
+               XOABC                                        CBAOX
+
+Note the following points carefully:
+1. Here, instead of X and O any character may be present.
+2. The input and output array size must be of dimension 5 × 5 and nothing else.
+3. Only side-by-side reflection should be performed i.e. ABC || CBA.
+
+
+A4 import java.util.Scanner;
+public class Question94{
+	public static void main(String args[]){
+		Scanner sc = new Scanner(System.in);
+// Declare necessary variables
+
+// Input 5x5 2D Array using Scanner Class
+
+// Perform the reflection operation
+
+// Output 5x5 2D Reflection Array
+  String arr[]=new String[5];
+    for(int i=0;i<5;i++)
+        arr[i]=sc.nextLine();
+    
+char matrix[][]=new char[5][5];
+for(int i=0;i<5;i++){
+	char[] chararray=arr[i].toCharArray();
+  for(int j=0;j<5;j++){
+  	matrix[i][j]=chararray[j];
+  }
+}
+for(int i=0;i<5;i++){
+    for(int j=4;j>=0;j--)
+        System.out.print(matrix[i][j]);
+    System.out.println();
+}
+
+	} // The main() method ends here
+} // The main class ends here
+
+
+Q5 Write suitable code to develop a 2D Flip-Flop Array with dimension 5 × 5, which replaces all input elements with values 0 by 1 and 1 by 0. An example is shown below:
+
+INPUT:
+               00001
+               00001
+               00001
+               00001
+               00001
+
+OUTPUT:
+
+               11110
+               11110
+               11110
+               11110
+               11110
+
+
+A5 import java.util.Scanner;
+public class Question95{
+	public static void main(String args[]){
+		Scanner sc = new Scanner(System.in);
+// Declare the 5X5 2D array to store the input
+
+// Input 2D Array using Scanner Class and check data validity
+
+// Perform the Flip-Flop Operation
+
+// Output the 2D Flip-Flop Array
+String arr[]=new String[5];
+    for(int i=0;i<5;i++)
+        arr[i]=sc.nextLine();
+    
+char matrix[][]=new char[5][5];
+for(int i=0;i<5;i++){
+	char[] chararray=arr[i].toCharArray();
+  for(int j=0;j<5;j++){
+  	matrix[i][j]=chararray[j];
+  }
+}
+for(int i=0;i<5;i++){
+  for(int j=0;j<5;j++){
+  	if(matrix[i][j]=='0')
+      System.out.print('1');
+    else
+      System.out.print('0');
+   
+  }
+  System.out.println();
+}
+	} // The main() ends here
+} // The main class ends here
