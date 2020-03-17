@@ -1,0 +1,323 @@
+Complete the code segment to insert the following data using prepared statement in the existing table ‘PLAYERS’.
+
+
+Column      UID       First_Name       Last_Name    Age
+
+Row 1        1          Ram             Gopal       26
+
+Row 2        2          John            Mayer       22
+
+public class InsertData {
+    public static void main(String args[]) {
+        try {
+              Connection conn = null;
+              Statement stmt = null;
+              String DB_URL = "jdbc:sqlite:/tempfs/db";
+              System.setProperty("org.sqlite.tmpdir", "/tempfs");
+            
+              stmt = conn.createStatement();
+// The statement containing SQL command to create table "players"
+String CREATE_TABLE_SQL="CREATE TABLE players (UID INT, First_Name VARCHAR(45), Last_Name VARCHAR(45), Age INT);";
+// Execute the statement containing SQL command
+stmt.executeUpdate(CREATE_TABLE_SQL);
+String query = " insert into PLAYERS (UID, first_name, last_name, age)"  + " values (?, ?, ?, ?)";
+
+			PreparedStatement preparedStmt = conn.prepareStatement(query);
+			preparedStmt.setInt (1, 1);
+			preparedStmt.setString (2, "Ram");
+			preparedStmt.setString (3, "Gopal");
+			preparedStmt.setInt(4, 26);
+
+			preparedStmt.execute();
+	  
+			preparedStmt.setInt (1, 2);
+			preparedStmt.setString (2, "John");
+			preparedStmt.setString   (3, "Mayer");
+			preparedStmt.setInt(4, 22);
+			
+			preparedStmt.execute();
+
+//Evaluation Portion
+			
+			ResultSet rs = stmt.executeQuery("SELECT * FROM players;");
+			while(rs.next())  
+				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+"  "+rs.getString(4));
+			conn.close();
+			
+
+		}catch(Exception e){ System.out.println(e);}  
+	}  
+}  
+
+
+A1 import java.sql.*;
+import java.lang.*;
+public class InsertData {
+    public static void main(String args[]) {
+        try {
+              Connection conn = null;
+              Statement stmt = null;
+              String DB_URL = "jdbc:sqlite:/tempfs/db";
+              System.setProperty("org.sqlite.tmpdir", "/tempfs");
+            
+              // Open a connection
+              conn = DriverManager.getConnection(DB_URL);
+              stmt = conn.createStatement();
+// The statement containing SQL command to create table "players"
+String CREATE_TABLE_SQL="CREATE TABLE players (UID INT, First_Name VARCHAR(45), Last_Name VARCHAR(45), Age INT);";
+// Execute the statement containing SQL command
+stmt.executeUpdate(CREATE_TABLE_SQL);
+String query = " insert into PLAYERS (UID, first_name, last_name, age)"  + " values (?, ?, ?, ?)";
+
+			PreparedStatement preparedStmt = conn.prepareStatement(query);
+			preparedStmt.setInt (1, 1);
+			preparedStmt.setString (2, "Ram");
+			preparedStmt.setString (3, "Gopal");
+			preparedStmt.setInt(4, 26);
+
+			preparedStmt.execute();
+	  
+			preparedStmt.setInt (1, 2);
+			preparedStmt.setString (2, "John");
+			preparedStmt.setString   (3, "Mayer");
+			preparedStmt.setInt(4, 22);
+			
+			preparedStmt.execute();
+
+//Evaluation Portion
+			
+			ResultSet rs = stmt.executeQuery("SELECT * FROM players;");
+			while(rs.next())  
+				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+"  "+rs.getString(4));
+			conn.close();
+			
+
+		}catch(Exception e){ System.out.println(e);}  
+	}  
+}  
+
+
+Q2 Write the required code in order to update the following data in the table ‘PLAYERS’.
+
+
+Column  UID   First_Name       Last_Name          Age 
+
+From      1       Ram            Gopal              26         
+
+To        1       Rama          Gopala              24
+
+A2 import java.sql.*;
+import java.lang.*;
+public class UpdateData {
+    public static void main(String args[]) {
+        try {
+              Connection conn = null;
+              Statement stmt = null;
+              String DB_URL = "jdbc:sqlite:/tempfs/db";
+              System.setProperty("org.sqlite.tmpdir", "/tempfs");
+              String query="";
+            
+              // Open a connection
+              conn = DriverManager.getConnection(DB_URL);
+              stmt = conn.createStatement();
+// The statement containing SQL command to create table "players"
+String CREATE_TABLE_SQL="CREATE TABLE players (UID INT, First_Name VARCHAR(45), Last_Name VARCHAR(45), Age INT);";
+// Execute the statement containing SQL command
+stmt.executeUpdate(CREATE_TABLE_SQL);
+
+ query = " insert into PLAYERS (UID, first_name, last_name, age)"  + " values (?, ?, ?, ?)";
+
+			PreparedStatement preparedStmt = conn.prepareStatement(query);
+			preparedStmt.setInt (1, 1);
+			preparedStmt.setString (2, "Ram");
+			preparedStmt.setString (3, "Gopal");
+			preparedStmt.setInt(4, 26);
+
+			preparedStmt.execute();
+	  
+			preparedStmt.setInt (1, 2);
+			preparedStmt.setString (2, "John");
+			preparedStmt.setString   (3, "Mayer");
+			preparedStmt.setInt(4, 22);
+			
+			preparedStmt.execute();
+String sql = "UPDATE PLAYERS " +
+                   "SET Age = 24 WHERE UID == 1";
+      stmt.executeUpdate(sql);
+String sql1 = "UPDATE PLAYERS " +
+                   "SET Last_Name = 'Gopala' WHERE UID == 1";
+      stmt.executeUpdate(sql1);
+String sql2 = "UPDATE PLAYERS " +
+                   "SET First_Name = 'Rama' WHERE UID == 1";
+      stmt.executeUpdate(sql2);
+ResultSet rs = stmt.executeQuery("SELECT * FROM players;");
+			while(rs.next())  
+				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+"  "+rs.getString(4));
+			conn.close();
+			
+
+		}
+                catch(Exception e){ System.out.println(e);}  
+	}  
+}  
+
+
+
+Q3 Write the appropriate code in order to delete the following data in the table ‘PLAYERS’.
+
+
+Column   UID     First_Name   Last_Name     Age
+
+Delete    1       Rama         Gopala       24
+ 
+A3 import java.sql.*;
+import java.lang.*;
+public class DeleteData {
+    public static void main(String args[]) {
+        try {
+              Connection conn = null;
+              Statement stmt = null;
+              String DB_URL = "jdbc:sqlite:/tempfs/db";
+              System.setProperty("org.sqlite.tmpdir", "/tempfs");
+              String query="";
+            
+              // Open a connection
+              conn = DriverManager.getConnection(DB_URL);
+              stmt = conn.createStatement();
+String CREATE_TABLE_SQL="CREATE TABLE players ( UID INT, first_name VARCHAR(45), last_name VARCHAR(45), age INT);";
+			stmt.executeUpdate(CREATE_TABLE_SQL);			
+			query = " insert into Players (UID, first_name, last_name, age)"  + " values (?, ?, ?, ?)";
+			PreparedStatement preparedStmt = conn.prepareStatement(query);
+			preparedStmt.setInt (1, 1);
+			preparedStmt.setString (2, "Rama");
+			preparedStmt.setString (3, "Gopala");
+			preparedStmt.setInt(4, 24);
+			preparedStmt.execute();
+			preparedStmt.setInt (1, 2);
+			preparedStmt.setString (2, "John");
+			preparedStmt.setString   (3, "Mayer");
+			preparedStmt.setInt(4, 22);
+			preparedStmt.execute();
+
+  String sql = "DELETE FROM PLAYERS " +
+                   "WHERE UID = 1";
+      stmt.executeUpdate(sql);
+ResultSet rs = stmt.executeQuery("SELECT * FROM players;");
+			while(rs.next())  
+				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+"  "+rs.getString(4));
+			conn.close();
+			
+
+
+		}
+                catch(Exception e){ System.out.println(e);}  
+	}  
+}  
+
+
+Q4 Complete the following program to calculate the average age of the players in the table ‘PLAYERS’.
+
+Structure of Table 'PLAYERS' is given below:
+
+
+Column    UID       First_Name        Last_Name          Age   
+Type    Integer     Varchar (45)     Varchar (45)      Integer
+
+A4 import java.sql.*;
+import java.lang.*;
+public class CalAverage {
+    public static void main(String args[]) {
+        try {
+              Connection conn = null;
+              Statement stmt = null;
+              String DB_URL = "jdbc:sqlite:/tempfs/db";
+              System.setProperty("org.sqlite.tmpdir", "/tempfs");
+              String query="";
+              // Open a connection
+              conn = DriverManager.getConnection(DB_URL);
+              stmt = conn.createStatement();
+String CREATE_TABLE_SQL="CREATE TABLE players ( UID INT, first_name VARCHAR(45), last_name VARCHAR(45), age INT);";
+			stmt.executeUpdate(CREATE_TABLE_SQL);			
+			query = " insert into Players (UID, first_name, last_name, age)"  + " values (?, ?, ?, ?)";
+			PreparedStatement preparedStmt = conn.prepareStatement(query);
+			preparedStmt.setInt (1, 1);
+			preparedStmt.setString (2, "Rama");
+			preparedStmt.setString (3, "Gopala");
+			preparedStmt.setInt(4, 24);
+			preparedStmt.execute();
+			preparedStmt.setInt (1, 2);
+			preparedStmt.setString (2, "John");
+			preparedStmt.setString   (3, "Mayer");
+			preparedStmt.setInt(4, 22);
+			preparedStmt.execute();
+			preparedStmt.setInt (1, 3);
+			preparedStmt.setString (2, "Leo");
+			preparedStmt.setString   (3, "Martin");
+			preparedStmt.setInt(4, 27);
+			preparedStmt.execute();
+
+// Get the age of the players
+
+// Write program to calculate the average age
+String str='SELECT AVE(Age) from PLAYERS";
+// Print “Average age of players is XX” ; where XX is the INTEGER value of age.
+stmt.executeUpdate(str);
+			conn.close();
+
+
+			
+		}
+                catch(Exception e){ System.out.println(e);}  
+	}  
+}  
+
+
+Q5 Complete the code segment to drop the table named ‘PLAYERS’.
+
+public class DropTable {
+    public static void main(String args[]) {
+        try {
+              Connection conn = null;
+              Statement stmt = null;
+              String DB_URL = "jdbc:sqlite:/tempfs/db";
+              System.setProperty("org.sqlite.tmpdir", "/tempfs");
+              String query="";
+            
+              // Open a connection
+              conn = DriverManager.getConnection(DB_URL);
+              stmt = conn.createStatement();
+// The statement containing SQL command to create table "players"
+// Execute the statement containing SQL command
+
+
+A5 import java.sql.*;
+import java.lang.*;
+public class DropTable {
+    public static void main(String args[]) {
+        try {
+              Connection conn = null;
+              Statement stmt = null;
+              String DB_URL = "jdbc:sqlite:/tempfs/db";
+              System.setProperty("org.sqlite.tmpdir", "/tempfs");
+              String query="";
+            
+              // Open a connection
+              conn = DriverManager.getConnection(DB_URL);
+              stmt = conn.createStatement();
+// The statement containing SQL command to create table "players"
+String CREATE_TABLE_SQL="CREATE TABLE players (UID INT, First_Name VARCHAR(45), Last_Name VARCHAR(45), Age INT);";
+// Execute the statement containing SQL command
+stmt.executeUpdate(CREATE_TABLE_SQL);
+String str="drop table PLAYERS";
+stmt.executeUpdate(str);
+			ResultSet rs = stmt.executeQuery("SELECT * FROM players;");
+			ResultSetMetaData rsmd = rs.getMetaData();
+			System.out.println("No. of columns : " + rsmd.getColumnCount());
+					
+			conn.close();
+			
+
+		}
+                catch(Exception e){ System.out.println(e);}  
+	}  
+}  
